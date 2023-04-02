@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registeration</title>
+    <style>
+        *{
+            background-color: rgba(253,247,248,255);
+        }
+        #logo{
+        width: 190px;
+        /* margin-top:10px; */
+        }
+        #register{
+            width: 30%;
+            padding-left: 35px;
+            /* border: 2px solid black; */
+            display: inline-block;
+            margin-left:470px ;
+            height: 500px;
+            box-shadow: rgba(224, 120, 186, 0.4) -5px 5px, rgba(46, 208, 240, 0.3) -10px 10px, rgba(240, 211, 46, 0.2) -15px 15px, rgba(240, 46, 46, 0.1) -20px 20px, rgba(56, 46, 240, 0.05) -25px 25px;
+        }
+    .inp{
+            border: none;
+           padding-left: 10px;
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+            border-radius: 4px;
+            height: 30px;
+            width: 90%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            
+        }
+        #submit{
+            width: 85px;
+            height: 40px;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-left:120px ;
+
+        }
+        #submit:hover{
+            background-color: blue;
+            color:white;
+            font-weight: bold;
+            border: none;
+
+        }
+        .head{
+            height: 5px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <a href="./index.html">
+        <img src="./Screenshot 2023-03-28 at 1.46.16 PM.png" alt="error" id="logo"></a>
+    </div>
+    <div id="register">
+        <form action="">
+            <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Sign Up</h1>
+            <input type="text" placeholder="Enter your Name" class="inp" id="name">
+            <h5 class="head">Your Name</h5>
+            <input type="email" name="" class="inp" placeholder="Enter your Email"  id="email">
+            <h5 class="head">Your Email</h5>
+            <input type="password" name="" class="inp" id="password" placeholder="Enter Your Password">
+            <h5 class="head">Your Password</h5>
+            <input type="password" name="" id="" class="inp" placeholder="Enter Your Password Again">
+            <h5 class="head">Repeat Your Password</h5>
+            <input type="radio" value="">
+            <label for="agree">I agree all statements in Terms of service</label><br>
+            <input type="submit" name="" id="submit" value="Submit" >
+        </form>
+    </div>
+    
+</body>
+<script>
+const myformdata=document.querySelector("form");
+    const Name=document.querySelector("#name");
+    const email=document.querySelector("#email");
+    const password=document.querySelector("#password");
+    let SignUpData=localStorage.getItem("SignUp-data");
+    if(SignUpData===null)
+    {
+        SignUpData=[];
+    }
+    else{
+        SignUpData=JSON.parse(SignUpData);
+        console.log(SignUpData);
+    }
+    
+        
+    myformdata.addEventListener("submit",function(){
+        let obj={
+        Name:Name.value,
+        Email:email.value,
+        Password:password.value,
+    }
+    
+    SignUpData.push(obj);
+    localStorage.setItem("SignUp-data", JSON.stringify(SignUpData));
+    alert("SigUp-Successful");
+    window.location.href='./signin.html';
+    
+    })
+
+</script>
+</html>
